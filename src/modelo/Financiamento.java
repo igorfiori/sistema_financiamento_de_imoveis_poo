@@ -1,8 +1,12 @@
+package modelo;
+
 public class Financiamento {
 
-    private double valorImovel;
-    private int prazoFinanciamento;
-    private double taxaJurosAnual;
+    // Atributos protegidos
+
+    protected double valorImovel;
+    protected int prazoFinanciamento;
+    protected double taxaJurosAnual;
 
     public Financiamento(double valorImovel, int prazoFinanciamento, double taxaJurosAnual) {
         this.valorImovel = valorImovel;
@@ -12,9 +16,7 @@ public class Financiamento {
 
     // Método público para calcular o pagamento mensal do financiamento
     public double calcularPagamentoMensal() {
-        double taxaMensal = taxaJurosAnual / 12 / 100; // Convertendo a taxa anual para mensal
-        int totalMeses = prazoFinanciamento * 12;
-        return (valorImovel * taxaMensal) / (1 - Math.pow(1 + taxaMensal, -totalMeses));
+        return (this.valorImovel /(this.prazoFinanciamento * 12)) * (1 + (this.taxaJurosAnual / 12));
     }
 
     // Método público para calcular o total do pagamento do financiamento
